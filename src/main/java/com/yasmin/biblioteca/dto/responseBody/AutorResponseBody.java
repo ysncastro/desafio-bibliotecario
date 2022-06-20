@@ -1,10 +1,7 @@
 package com.yasmin.biblioteca.dto.responseBody;
 
 import com.yasmin.biblioteca.domain.Livro;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class AutorResponseBody {
 
     private Long id;

@@ -21,7 +21,7 @@ public class Livro {
 
     private String isbn;
 
-    private Livro(Long id, String nome, String isbn) {
+    public Livro(Long id, String nome, String isbn) {
         this.id = id;
         this.nome = nome;
         this.isbn = isbn;

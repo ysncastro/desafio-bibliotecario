@@ -13,7 +13,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(LivroController.class)
@@ -30,7 +33,8 @@ public class LivroControllerTest {
 
     private ObjectMapper mapper = new ObjectMapper();
     private Livro livroExemplo;
-//    private String retornoComoJson;
+    private String retornoComoJson;
+    private String retornoComoJson2;
     private String envioComoJSON;
 
     public static Livro gerarLivro() {
@@ -44,22 +48,32 @@ public class LivroControllerTest {
     @BeforeEach
     public void inicializar() throws JsonProcessingException {
 
-        Livro livroExemplo = gerarLivro();
+        livroExemplo = gerarLivro();
         envioComoJSON = mapper.writeValueAsString(livroExemplo);
-//        retornoComoJson = mapper.writeValueAsString(livroExemplo);
-
+        retornoComoJson = mapper.writeValueAsString(livroExemplo);
+        retornoComoJson2 = mapper.writeValueAsString(new Livro(1L, "nome", "12812712"));
     }
 
 
     @DisplayName("Teste POST/Sucesso")
     @Test
     public void deveriaCriarUmLivro() throws Exception {
+
+        when(livroService.salvar(any())).thenReturn(livroExemplo);
+
         mockMvc.perform(post("/livros")
                         .content(envioComoJSON)
                         .accept(MediaType.APPLICATION_JSON_VALUE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                 )
+                .andExpect(content().json(retornoComoJson))
                 .andExpect(status().isCreated());
     }
+
+//    @DisplayName("Teste GETBYISBN/Sucesso")
+//    @Test
+//    public void deveriaBuscarLivroPorIsbn() {
+//
+//    }
 
 }

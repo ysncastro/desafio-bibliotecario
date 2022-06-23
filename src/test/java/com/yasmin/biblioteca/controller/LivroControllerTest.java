@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -72,7 +73,14 @@ public class LivroControllerTest {
 
 //    @DisplayName("Teste GETBYISBN/Sucesso")
 //    @Test
-//    public void deveriaBuscarLivroPorIsbn() {
+//    public void deveriaBuscarLivroPorIsbn() throws Exception {
+//
+//        when(livroService.buscaPorIsbn(any())).thenReturn(livroExemplo);
+//
+//        mockMvc.perform(get("/livros")
+//
+//        )
+//
 //
 //    }
 

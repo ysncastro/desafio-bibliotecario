@@ -55,8 +55,6 @@ public class LivroControllerTest {
         retornoComoJson2 = mapper.writeValueAsString(new Livro(1L, "nome", "12812712"));
     }
 
-
-    @DisplayName("Teste POST/Sucesso")
     @Test
     public void deveriaCriarUmLivro() throws Exception {
 

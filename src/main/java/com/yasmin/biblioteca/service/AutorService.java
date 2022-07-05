@@ -1,10 +1,13 @@
 package com.yasmin.biblioteca.service;
 
-import com.yasmin.biblioteca.dto.Autor;
+import com.yasmin.biblioteca.domain.Autor;
+import com.yasmin.biblioteca.dto.AutorDto;
 import com.yasmin.biblioteca.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import static com.yasmin.biblioteca.mapper.AutorMapper.toAutor;
 
 @Service
 public class AutorService {
@@ -12,11 +15,10 @@ public class AutorService {
     @Autowired
     AutorRepository repositorio;
 
-    public Autor salvar(Autor autor) {return repositorio.save(autor);}
-
-//    public Autor buscaPorId(Long id) throws ChangeSetPersister.NotFoundException {
-//        return repositorio.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new);
-//    }
-
+    @Transactional
+    public Autor salvar(AutorDto autorDto) {
+        Autor autor = toAutor(autorDto);
+        return repositorio.save(autor);
+    }
 
 }

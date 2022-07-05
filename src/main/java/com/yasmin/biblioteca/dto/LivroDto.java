@@ -1,16 +1,15 @@
 package com.yasmin.biblioteca.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 
+@Builder
 @Getter
-@Entity
-public class Autor {
+public class LivroDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +17,6 @@ public class Autor {
 
     private String nome;
 
-    private Autor() {}
-    
+    private String isbn;
 
 }

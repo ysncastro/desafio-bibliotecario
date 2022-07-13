@@ -21,8 +21,8 @@ public class Livro {
 
     private String isbn;
 
-//    @ManyToOne
-//    private Autor autor;
+    @ManyToOne
+    private Autor autor;
 
 
 

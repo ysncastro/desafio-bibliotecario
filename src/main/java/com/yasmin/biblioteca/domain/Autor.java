@@ -5,10 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,9 +21,11 @@ public class Autor {
 
     private String nome;
 
-//    @OneToMany
-//    private List<Livro> publicacoes;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Livro> publicacoes;
 
-
+    public void adicionaLivro(Livro livro) {
+        this.publicacoes.add(livro);
+    }
 
 }

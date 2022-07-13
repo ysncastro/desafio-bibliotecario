@@ -11,7 +11,7 @@ public abstract class AutorMapper {
     public static Autor toAutor(AutorDto autorDto) {
         return Autor.builder()
                 .nome(autorDto.getNome())
-//                .publicacoes(autorRequest.getPublicacoes())
+//                .publicacoes(autorDto.getPublicacoes())
                 .build();
     }
 
@@ -19,7 +19,7 @@ public abstract class AutorMapper {
         return AutorDto.builder()
                 .id(autor.getId())
                 .nome(autor.getNome())
-//               .publicacoes(autor.getPublicacoes())
+//                .publicacoes(autor.getPublicacoes())
                 .build();
     }
 }

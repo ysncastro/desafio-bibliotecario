@@ -1,5 +1,6 @@
 package com.yasmin.biblioteca.mapper;
 
+import com.yasmin.biblioteca.domain.Autor;
 import com.yasmin.biblioteca.domain.Livro;
 import com.yasmin.biblioteca.dto.LivroDto;
 
@@ -9,7 +10,9 @@ public abstract class LivroMapper {
         return Livro.builder()
                 .nome(livroDto.getNome())
                 .isbn(livroDto.getIsbn())
-//                .autor(livroRequest.getAutor())
+                .autor(Autor.builder()
+                        .id(livroDto.getId())
+                        .build())
                 .build();
     }
 
@@ -18,7 +21,7 @@ public abstract class LivroMapper {
                 .id(livro.getId())
                 .nome(livro.getNome())
                 .isbn(livro.getIsbn())
-//                .autor(livro.getAutor())
+                .idAutor(livro.getAutor().getId())
                 .build();
     }
 }

@@ -19,4 +19,6 @@ public class LivroDto {
 
     private String isbn;
 
+    private Long idAutor;
+
 }

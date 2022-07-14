@@ -24,6 +24,4 @@ public class Livro {
     @ManyToOne
     private Autor autor;
 
-
-
 }

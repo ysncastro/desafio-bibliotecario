@@ -1,6 +1,5 @@
 package com.yasmin.biblioteca.controller;
 
-import com.yasmin.biblioteca.domain.Livro;
 import com.yasmin.biblioteca.dto.LivroDto;
 import com.yasmin.biblioteca.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;

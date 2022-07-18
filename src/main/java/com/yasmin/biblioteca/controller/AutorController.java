@@ -1,6 +1,5 @@
 package com.yasmin.biblioteca.controller;
 
-import com.yasmin.biblioteca.domain.Autor;
 import com.yasmin.biblioteca.dto.AutorDto;
 import com.yasmin.biblioteca.repository.AutorRepository;
 import com.yasmin.biblioteca.service.AutorService;

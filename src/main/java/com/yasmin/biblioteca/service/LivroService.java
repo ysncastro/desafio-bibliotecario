@@ -3,14 +3,10 @@ package com.yasmin.biblioteca.service;
 import com.yasmin.biblioteca.domain.Autor;
 import com.yasmin.biblioteca.domain.Livro;
 import com.yasmin.biblioteca.dto.LivroDto;
-import com.yasmin.biblioteca.dto.LivroPageDto;
 import com.yasmin.biblioteca.exception.ApiException;
-import com.yasmin.biblioteca.mapper.LivroMapper;
 import com.yasmin.biblioteca.repository.AutorRepository;
 import com.yasmin.biblioteca.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -33,10 +29,4 @@ public class LivroService {
 //        autor.adicionaLivro(livro);
         return repositorio.save(livro);
     }
-
-    public LivroPageDto listaLivrosComPaginacao(int pagina, int tribosPorPagina) {
-        return new LivroMapper().paraLivroPageDto(
-                repositorio.findAll(PageRequest.of(pagina, tribosPorPagina, Sort.by("nome"))));
-    }
-
 }

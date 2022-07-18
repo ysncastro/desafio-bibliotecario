@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import static com.yasmin.biblioteca.mapper.LivroMapper.toLivro;
+import static com.yasmin.biblioteca.mapper.LivroMapper.toLivroDto;
 
 @Service
 public class LivroService {
@@ -22,11 +23,15 @@ public class LivroService {
     AutorRepository autorRepository;
 
 
-    public Livro salvar(LivroDto livroDto) {
+    public LivroDto salvar(LivroDto livroDto) {
         Livro livro = toLivro(livroDto);
         Autor autor = autorRepository.findById(livroDto.getIdAutor()).orElseThrow(() -> new ApiException("Autor não encontrado", HttpStatus.NOT_FOUND));
+        autor.adicionaLivro(livro);
         livro.setAutor(autor);
-//        autor.adicionaLivro(livro);
-        return repositorio.save(livro);
+        return toLivroDto(repositorio.save(livro));
     }
+
+    public LivroDto buscaPorIsbn(String isbnRequisitado) {
+        return toLivroDto(repositorio.findByIsbn(isbnRequisitado));}
+
 }

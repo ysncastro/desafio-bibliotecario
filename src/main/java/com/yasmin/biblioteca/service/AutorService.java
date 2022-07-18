@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.yasmin.biblioteca.mapper.AutorMapper.toAutor;
+import static com.yasmin.biblioteca.mapper.AutorMapper.toAutorDto;
 
 @Service
 public class AutorService {
@@ -14,9 +15,9 @@ public class AutorService {
     @Autowired
     AutorRepository repositorio;
 
-    public Autor salvar(AutorDto autorDto) {
+    public AutorDto salvar(AutorDto autorDto) {
         Autor autor = toAutor(autorDto);
-        return repositorio.save(autor);
+        return toAutorDto(repositorio.save(autor));
     }
 
 }

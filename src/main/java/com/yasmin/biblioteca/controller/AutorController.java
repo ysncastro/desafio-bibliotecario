@@ -4,7 +4,6 @@ import com.yasmin.biblioteca.domain.Autor;
 import com.yasmin.biblioteca.dto.AutorDto;
 import com.yasmin.biblioteca.repository.AutorRepository;
 import com.yasmin.biblioteca.service.AutorService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +22,13 @@ public class AutorController {
     AutorRepository autorRepository;
 
     @PostMapping("/autores")
-    public ResponseEntity<Autor> salvar(@RequestBody AutorDto autorDto) {
+    public ResponseEntity<AutorDto> salvar(@RequestBody AutorDto autorDto) {
         return new ResponseEntity<>(autorService.salvar(autorDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/autores/{id}")
-    public AutorDto buscaPorId(@PathVariable Long id) {
-        return toAutorDto(autorRepository.findById(id).get());
+    public ResponseEntity<AutorDto> buscaPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(toAutorDto(autorRepository.findById(id).get()), HttpStatus.OK);
     }
 
 }

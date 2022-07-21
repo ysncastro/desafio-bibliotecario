@@ -1,8 +1,12 @@
 package com.yasmin.biblioteca.mapper;
 
 import com.yasmin.biblioteca.domain.Autor;
+import com.yasmin.biblioteca.domain.Livro;
 import com.yasmin.biblioteca.dto.AutorDto;
+import com.yasmin.biblioteca.dto.LivroDto;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -22,4 +26,5 @@ public abstract class AutorMapper {
 //                .publicacoes(autor.getPublicacoes())
                 .build();
     }
+
 }

@@ -5,6 +5,9 @@ import com.yasmin.biblioteca.domain.Livro;
 import com.yasmin.biblioteca.dto.LivroDto;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 public class LivroMapper {
 
@@ -26,4 +29,19 @@ public class LivroMapper {
                 .idAutor(livro.getAutor().getId())
                 .build();
     }
+
+    public static List<LivroDto> toListaDeLivrosDto(List<Livro> livros) {
+        List<LivroDto> livrosRetorno = new ArrayList<>();
+        livros.forEach(livro -> {
+            LivroDto livroDto = LivroDto.builder()
+                    .id(livro.getId())
+                    .nome(livro.getNome())
+                    .isbn(livro.getIsbn())
+                    .idAutor(livro.getAutor().getId())
+                    .build();
+            livrosRetorno.add(livroDto);
+        });
+        return livrosRetorno;
+    }
+
 }
